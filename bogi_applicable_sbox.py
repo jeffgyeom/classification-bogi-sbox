@@ -535,130 +535,135 @@ class XEI_PE_INTERSECTION():
 		
 
 if __name__ == "__main__":
-	NUM_BOGI_APPLICABLE_PXE_CLASSES 	= 2413
-	OPT_PXE_IDXES 						= [370, 390, 399, 404, 717, 720, 729, 732, 1016, 1018, 1104, 1108, 1659, 1713, 1806, 1832, 2050, 2147, 2176, 2190]
-	NUM_OPT_BOGI_APPLICABLE_PXE_CLASSES	= 20
-	NUM_OPT_BOGI_APPLICABLE_PE_CLASSES  = 4608
-	NUM_OPT_BOGI_APPLICABLE_XE_CLASSES  = 10368
-	NUM_OPT_BOGI_APPLICABLE_XEI_CLASSES = 1728
+	while True:
+		NUM_BOGI_APPLICABLE_PXE_CLASSES 	= 2413
+		OPT_PXE_IDXES 						= [370, 390, 399, 404, 717, 720, 729, 732, 1016, 1018, 1104, 1108, 1659, 1713, 1806, 1832, 2050, 2147, 2176, 2190]
+		NUM_OPT_BOGI_APPLICABLE_PXE_CLASSES	= 20
+		NUM_OPT_BOGI_APPLICABLE_PE_CLASSES  = 4608
+		NUM_OPT_BOGI_APPLICABLE_XE_CLASSES  = 10368
+		NUM_OPT_BOGI_APPLICABLE_XEI_CLASSES = 1728
 
-	MENU = [
-		"BOGI_PXE_CLASS     (# =  2,413)",
-		"OPT_BOGI_PXE_CLASS (# =     20)",
-		"OPT_BOGI_PE_CLASS  (# =  4,608)",
-		"OPT_BOGI_XE_CLASS  (# = 10,368)",
-		"OPT_BOGI_XEI_CLASS (# =  1,728)",
-		"BEST_OF_EACH_OPT_PXE_CLASS"
-		]
-	
-	for m_idx in range(len(MENU)):
-		print("%2d - %s"%(m_idx, MENU[m_idx]))
-	chosen = int(input("-> "))
-	print("[%s] is selected."%(MENU[chosen]))
-	
-	if chosen == 0:
-		##2,413 BOGI-applicable PXE classes
-		BOGI_PXE_CLASS().print_all(range(NUM_BOGI_APPLICABLE_PXE_CLASSES))
-	elif chosen == 1:	
-		##20   Optimal BOGI-applicable PXE classes(reordered for the paper)
-		B = []
-		for bidx in range(NUM_OPT_BOGI_APPLICABLE_PXE_CLASSES):
-			B.append(OPT_BOGI_PXE_CLASS(bidx))
-			print(B[-1])
-	elif chosen == 2:
-		##4,608 Optimal BOGI-applicable PE  classes
-		PE = []
-		for bidx in range(NUM_OPT_BOGI_APPLICABLE_PE_CLASSES):
-			PE.append(OPT_BOGI_PE_CLASS(bidx))
-			print(PE[-1])
-			#print(PE[-1].pe_software_code)
-	elif chosen == 3:
-		##10,368 Optimal BOGI-applicable XE  classes
-		XE = []
-		for bidx in range(NUM_OPT_BOGI_APPLICABLE_XE_CLASSES):
-			XE.append(OPT_BOGI_XE_CLASS(bidx))
-			print(XE[-1])
-			#print(XE[-1].xe_ddt)
-	elif chosen == 4:
-		##1,728  Optimal BOGI-applicable XEI  classes
-		XEI = []
-		for bidx in range(NUM_OPT_BOGI_APPLICABLE_XEI_CLASSES):
-			XEI.append(OPT_BOGI_XEI_CLASS(bidx))
-			print(XEI[-1])
-	elif chosen == 5:
-		#### PAPER RESULTS ####
-			#TABLE 12(DR LR)
-		PXE_DRLR_CONSIDER = [
-			#B0/B1
-			[( -62.8301 ,  -66.0000 ), ( -62.0000 ,  -68.0000 )],
-			#B2/B3
-			[( -65.8301 ,  -60.0000 ), ( -62.8301 ,  -70.0000 )],
-			#B4/B5
-			[( -68.4150 ,  -72.0000 )],
-			#B6/B7
-			[( -66.8301 ,  -68.0000 ), ( -64.0000 ,  -70.0000 )],
-			#B8/B9
-			[( -62.4150 ,  -52.0000 ), ( -56.4150 ,  -64.0000 )],
-			#B10/B11
-			[( -64.0000 ,  -60.0000 ), ( -62.8301 ,  -68.0000 )],
-			#B12/B13
-			[( -70.0000 ,  -68.0000 )],
-			#B14/B15
-			[( -66.8301 ,  -60.0000 )],
-			#B16/B17
-			[( -71.8301 ,  -52.0000 ), ( -68.4150 ,  -70.0000 )],
-			#B18/B19
-			[( -64.0000 ,  -52.0000 )]
-		]
+		MENU = [
+			"BOGI_PXE_CLASS     (# =  2,413)",
+			"OPT_BOGI_PXE_CLASS (# =     20)",
+			"OPT_BOGI_PE_CLASS  (# =  4,608)",
+			"OPT_BOGI_XE_CLASS  (# = 10,368)",
+			"OPT_BOGI_XEI_CLASS (# =  1,728)",
+			"BEST_OF_EACH_OPT_PXE_CLASS"
+			"QUIT"
+			]
+		
+		for m_idx in range(len(MENU)):
+			print("%2d - %s"%(m_idx, MENU[m_idx]))
+		chosen = int(input("-> "))
+		print("[%s] is selected."%(MENU[chosen]))
 
-		#TABLE 12(BGC GEC)
-		PXE_BGCGEC_CONSIDER = [
-			#B0/B1
-			[(10.0, 16.66), (11.0, 16.0)],
-			#B2/B3
-			[(10.0, 16.66), (11.0, 16.0)],
-			#B4/B5
-			[(11.0, 18.33), (12.0, 18.0)],
-			#B6/B7
-			[(11.0, 18.33), (12.0, 18.0)],
-			#B8/B9
-			[(12.0, 20.33), (13.0, 20.0)],
-			#B10/B11
-			[(11.0, 18.33), (12.0, 18.0)],
-			#B12/B13
-			[(11.0, 18.33), (12.0, 18.0)],
-			#B14/B15
-			[(12.0, 19.99), (13.0, 19.33)],
-			#B16/B17
-			[(12.0, 19.66), (13.0, 19.0)],
-			#B18/B19
-			[(13.0, 21.33), (14.0, 21.0)],
-		]
+		if chosen == 6:
+			break
+		
+		if chosen == 0:
+			##2,413 BOGI-applicable PXE classes
+			BOGI_PXE_CLASS().print_all(range(NUM_BOGI_APPLICABLE_PXE_CLASSES))
+		elif chosen == 1:	
+			##20   Optimal BOGI-applicable PXE classes(reordered for the paper)
+			B = []
+			for bidx in range(NUM_OPT_BOGI_APPLICABLE_PXE_CLASSES):
+				B.append(OPT_BOGI_PXE_CLASS(bidx))
+				print(B[-1])
+		elif chosen == 2:
+			##4,608 Optimal BOGI-applicable PE  classes
+			PE = []
+			for bidx in range(NUM_OPT_BOGI_APPLICABLE_PE_CLASSES):
+				PE.append(OPT_BOGI_PE_CLASS(bidx))
+				print(PE[-1])
+				#print(PE[-1].pe_software_code)
+		elif chosen == 3:
+			##10,368 Optimal BOGI-applicable XE  classes
+			XE = []
+			for bidx in range(NUM_OPT_BOGI_APPLICABLE_XE_CLASSES):
+				XE.append(OPT_BOGI_XE_CLASS(bidx))
+				print(XE[-1])
+				#print(XE[-1].xe_ddt)
+		elif chosen == 4:
+			##1,728  Optimal BOGI-applicable XEI  classes
+			XEI = []
+			for bidx in range(NUM_OPT_BOGI_APPLICABLE_XEI_CLASSES):
+				XEI.append(OPT_BOGI_XEI_CLASS(bidx))
+				print(XEI[-1])
+		elif chosen == 5:
+			#### PAPER RESULTS ####
+				#TABLE 12(DR LR)
+			PXE_DRLR_CONSIDER = [
+				#B0/B1
+				[( -62.8301 ,  -66.0000 ), ( -62.0000 ,  -68.0000 )],
+				#B2/B3
+				[( -65.8301 ,  -60.0000 ), ( -62.8301 ,  -70.0000 )],
+				#B4/B5
+				[( -68.4150 ,  -72.0000 )],
+				#B6/B7
+				[( -66.8301 ,  -68.0000 ), ( -64.0000 ,  -70.0000 )],
+				#B8/B9
+				[( -62.4150 ,  -52.0000 ), ( -56.4150 ,  -64.0000 )],
+				#B10/B11
+				[( -64.0000 ,  -60.0000 ), ( -62.8301 ,  -68.0000 )],
+				#B12/B13
+				[( -70.0000 ,  -68.0000 )],
+				#B14/B15
+				[( -66.8301 ,  -60.0000 )],
+				#B16/B17
+				[( -71.8301 ,  -52.0000 ), ( -68.4150 ,  -70.0000 )],
+				#B18/B19
+				[( -64.0000 ,  -52.0000 )]
+			]
 
-		for pxe_idx in range(20):
-			DRLR = PXE_DRLR_CONSIDER[pxe_idx//2]
-			COST = PXE_BGCGEC_CONSIDER[pxe_idx//2]
-			RST_DICT = dict()
-			print("######################%3d-th pxe class###########################"%pxe_idx)
-			for xei_idx in range(__XEI_INTERVAL__[pxe_idx], __XEI_INTERVAL__[pxe_idx + 1]):
-				for pe_idx in range(__PE_INTERVAL__[pxe_idx], __PE_INTERVAL__[pxe_idx + 1]):
-					R = XEI_PE_INTERSECTION(pxe_idx, xei_idx, pe_idx)
-					if R.xeipe_DRLR13_64 in DRLR:
-						if (R.xeipe_software, R.xeipe_UMC180nm) in COST:
-							KEY = (R.xeipe_DRLR13_64, (R.xeipe_software, R.xeipe_UMC180nm))
-							if KEY in RST_DICT.keys():
-								for s in R.xeipe_sboxes:
-									RST_DICT[KEY].append(s)
-							else:
-								RST_DICT[KEY] = []
-								for s in R.xeipe_sboxes:
-									RST_DICT[KEY].append(s)
-			for drlr_cost in sorted(RST_DICT.keys()):
-				print("#(DR13, LR13)64 : ", drlr_cost[0])
-				print("#(BGC, GEC)     : ", drlr_cost[1])
-				for s in RST_DICT[drlr_cost]:
-					print(s)
-			print("#################################################################")	
+			#TABLE 12(BGC GEC)
+			PXE_BGCGEC_CONSIDER = [
+				#B0/B1
+				[(10.0, 16.66), (11.0, 16.0)],
+				#B2/B3
+				[(10.0, 16.66), (11.0, 16.0)],
+				#B4/B5
+				[(11.0, 18.33), (12.0, 18.0)],
+				#B6/B7
+				[(11.0, 18.33), (12.0, 18.0)],
+				#B8/B9
+				[(12.0, 20.33), (13.0, 20.0)],
+				#B10/B11
+				[(11.0, 18.33), (12.0, 18.0)],
+				#B12/B13
+				[(11.0, 18.33), (12.0, 18.0)],
+				#B14/B15
+				[(12.0, 19.99), (13.0, 19.33)],
+				#B16/B17
+				[(12.0, 19.66), (13.0, 19.0)],
+				#B18/B19
+				[(13.0, 21.33), (14.0, 21.0)],
+			]
+
+			for pxe_idx in range(20):
+				DRLR = PXE_DRLR_CONSIDER[pxe_idx//2]
+				COST = PXE_BGCGEC_CONSIDER[pxe_idx//2]
+				RST_DICT = dict()
+				print("######################%3d-th pxe class###########################"%pxe_idx)
+				for xei_idx in range(__XEI_INTERVAL__[pxe_idx], __XEI_INTERVAL__[pxe_idx + 1]):
+					for pe_idx in range(__PE_INTERVAL__[pxe_idx], __PE_INTERVAL__[pxe_idx + 1]):
+						R = XEI_PE_INTERSECTION(pxe_idx, xei_idx, pe_idx)
+						if R.xeipe_DRLR13_64 in DRLR:
+							if (R.xeipe_software, R.xeipe_UMC180nm) in COST:
+								KEY = (R.xeipe_DRLR13_64, (R.xeipe_software, R.xeipe_UMC180nm))
+								if KEY in RST_DICT.keys():
+									for s in R.xeipe_sboxes:
+										RST_DICT[KEY].append(s)
+								else:
+									RST_DICT[KEY] = []
+									for s in R.xeipe_sboxes:
+										RST_DICT[KEY].append(s)
+				for drlr_cost in sorted(RST_DICT.keys()):
+					print("#(DR13, LR13)64 : ", drlr_cost[0])
+					print("#(BGC, GEC)     : ", drlr_cost[1])
+					for s in RST_DICT[drlr_cost]:
+						print(s)
+				print("#################################################################")	
 
 
 
