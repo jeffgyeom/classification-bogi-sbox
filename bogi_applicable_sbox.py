@@ -549,7 +549,7 @@ if __name__ == "__main__":
 			"OPT_BOGI_PE_CLASS  (# =  4,608)",
 			"OPT_BOGI_XE_CLASS  (# = 10,368)",
 			"OPT_BOGI_XEI_CLASS (# =  1,728)",
-			"BEST_OF_EACH_OPT_PXE_CLASS"
+			"BEST_OF_EACH_OPT_PXE_CLASS",
 			"QUIT"
 			]
 		
